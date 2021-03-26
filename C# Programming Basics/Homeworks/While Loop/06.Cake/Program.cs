@@ -26,7 +26,6 @@ namespace _06.Cake
                 {
                     break;
                 }
-
             }
             
             if (cake >= 0)
