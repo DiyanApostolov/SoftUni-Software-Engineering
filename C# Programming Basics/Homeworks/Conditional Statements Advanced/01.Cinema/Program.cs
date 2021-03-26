@@ -7,7 +7,6 @@ namespace _01.Cinema
     {
         static void Main(string[] args)
         {
-
             // Input
 
             string type = Console.ReadLine();
