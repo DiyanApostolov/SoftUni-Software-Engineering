@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace _06CardsGame
+namespace _06.CardsGame
 {
     class Program
     {
