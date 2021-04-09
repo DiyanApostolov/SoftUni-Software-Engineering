@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace _05BombNumbers
+namespace _05.BombNumbers
 {
     class Program
     {
