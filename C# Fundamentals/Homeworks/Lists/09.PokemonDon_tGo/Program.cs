@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace _09PokemonDon_tGo
+namespace _09.PokemonDon_tGo
 {
     class Program
     {
