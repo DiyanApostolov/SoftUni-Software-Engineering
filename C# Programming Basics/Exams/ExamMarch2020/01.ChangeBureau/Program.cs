@@ -25,7 +25,6 @@ namespace _01.ChangeBureau
             double comission = sum - (sum * ((100 - comissionAmount) / 100));
             double result = sum - comission;
 
-
             // Output
 
             Console.WriteLine($"{result:f2}");
