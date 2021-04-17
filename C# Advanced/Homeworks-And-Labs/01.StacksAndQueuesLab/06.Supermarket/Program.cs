@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace _05.Supermarket
+namespace _06.Supermarket
 {
     class Program
     {
