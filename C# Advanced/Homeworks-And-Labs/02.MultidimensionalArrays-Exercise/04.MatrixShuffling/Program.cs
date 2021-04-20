@@ -34,43 +34,45 @@ namespace _04.MatrixShuffling
             {
                 if (cmdArg[0] == "swap")
                 {
-                    int row1 = int.Parse(cmdArg[1]);
-                    int col1 = int.Parse(cmdArg[2]);
-                    int row2 = int.Parse(cmdArg[3]);
-                    int col2 = int.Parse(cmdArg[4]);
-
-
-                    if (isValidCell(row1, row2, col1, col2, rows, cols))
+                    if (cmdArg.Length == 5)
                     {
-                        string currentElement = matrix[row1, col1];
-                        matrix[row1, col1] = matrix[row2, col2];
-                        matrix[row2, col2] = currentElement;
+                        int row1 = int.Parse(cmdArg[1]);
+                        int col1 = int.Parse(cmdArg[2]);
+                        int row2 = int.Parse(cmdArg[3]);
+                        int col2 = int.Parse(cmdArg[4]);
+
+                        if (isValidCell(row1, row2, col1, col2, rows, cols))
+                        {
+                            string currentElement = matrix[row1, col1];
+                            matrix[row1, col1] = matrix[row2, col2];
+                            matrix[row2, col2] = currentElement;
+
+                            printMatrix(matrix);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input!");
+                        }
                     }
                     else
                     {
                         Console.WriteLine("Invalid input!");
-                        cmdArg = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                        continue;
                     }
                 }
                 else
                 {
                     Console.WriteLine("Invalid input!");
-                    cmdArg = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                    continue;
                 }
-
-                printMatrix(matrix, rows, cols);
 
                 cmdArg = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
             }
         }
 
-        private static void printMatrix(string[,] matrix, int rows, int cols)
+        private static void printMatrix(string[,] matrix)
         {
-            for (int row = 0; row < rows; row++)
+            for (int row = 0; row < matrix.GetLength(0); row++)
             {
-                for (int col = 0; col < cols; col++)
+                for (int col = 0; col < matrix.GetLength(1); col++)
                 {
                     Console.Write(matrix[row, col] + " ");
                 }
