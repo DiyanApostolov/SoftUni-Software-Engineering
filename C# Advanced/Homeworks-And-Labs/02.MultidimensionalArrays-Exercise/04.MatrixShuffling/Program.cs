@@ -41,13 +41,13 @@ namespace _04.MatrixShuffling
                         int row2 = int.Parse(cmdArg[3]);
                         int col2 = int.Parse(cmdArg[4]);
 
-                        if (isValidCell(row1, row2, col1, col2, rows, cols))
+                        if (IsValidCell(row1, row2, col1, col2, rows, cols))
                         {
                             string currentElement = matrix[row1, col1];
                             matrix[row1, col1] = matrix[row2, col2];
                             matrix[row2, col2] = currentElement;
 
-                            printMatrix(matrix);
+                            PrintMatrix(matrix);
                         }
                         else
                         {
@@ -68,7 +68,7 @@ namespace _04.MatrixShuffling
             }
         }
 
-        private static void printMatrix(string[,] matrix)
+        private static void PrintMatrix(string[,] matrix)
         {
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
@@ -80,7 +80,7 @@ namespace _04.MatrixShuffling
             };
         }
 
-        private static bool isValidCell(int row1, int row2, int col1, int col2, int rows, int cols)
+        private static bool IsValidCell(int row1, int row2, int col1, int col2, int rows, int cols)
         {
             return row1 >= 0 && row1 < rows && row2 >= 0 && row2 < rows &&
                    col1 >= 0 && col1 < cols && col2 >= 0 && col2 < cols ? true : false;
