@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.CountSameValuesInArray", "01.CountSameValuesInArray\01.CountSameValuesInArray.csproj", "{B9410A85-2B55-44E4-8275-C41BA8B7A080}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.AverageStudentGrades", "02.AverageStudentGrades\02.AverageStudentGrades.csproj", "{122363EF-E0C6-4259-ADC0-E3F483680601}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.AverageStudentGrades", "02.AverageStudentGrades\02.AverageStudentGrades.csproj", "{122363EF-E0C6-4259-ADC0-E3F483680601}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.ProductShop", "03.ProductShop\03.ProductShop.csproj", "{80307500-F1FC-4A6A-92E3-79E5AD97AD23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.ProductShop", "03.ProductShop\03.ProductShop.csproj", "{80307500-F1FC-4A6A-92E3-79E5AD97AD23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.CitiesByContinentAndCountry", "04.CitiesByContinentAndCountry\04.CitiesByContinentAndCountry.csproj", "{8F739FA1-6BD0-4072-95FE-41DAD3158E84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{80307500-F1FC-4A6A-92E3-79E5AD97AD23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80307500-F1FC-4A6A-92E3-79E5AD97AD23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80307500-F1FC-4A6A-92E3-79E5AD97AD23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F739FA1-6BD0-4072-95FE-41DAD3158E84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F739FA1-6BD0-4072-95FE-41DAD3158E84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F739FA1-6BD0-4072-95FE-41DAD3158E84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F739FA1-6BD0-4072-95FE-41DAD3158E84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
