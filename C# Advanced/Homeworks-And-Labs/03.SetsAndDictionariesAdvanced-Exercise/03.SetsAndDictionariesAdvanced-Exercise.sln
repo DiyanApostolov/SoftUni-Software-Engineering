@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.CountSymbols", "05.Count
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.Wardrobe", "06.Wardrobe\06.Wardrobe.csproj", "{B25E7D73-555E-4AA9-8D18-73D4E15484BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.TheV-Logger", "..\..\..\..\..\..\source\repos\SoftUniCourses\C# Advanced\07.TheV-Logger\07.TheV-Logger.csproj", "{D27776BB-D77C-4945-A345-E9836FC84550}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.TheV-Logger", "..\..\..\..\..\..\source\repos\SoftUniCourses\C# Advanced\07.TheV-Logger\07.TheV-Logger.csproj", "{D27776BB-D77C-4945-A345-E9836FC84550}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.Ranking", "..\..\..\..\..\..\source\repos\SoftUniCourses\C# Advanced\08.Ranking\08.Ranking.csproj", "{7B1FBD8B-7860-4E47-BD0F-06D7F53EF98B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{D27776BB-D77C-4945-A345-E9836FC84550}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D27776BB-D77C-4945-A345-E9836FC84550}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D27776BB-D77C-4945-A345-E9836FC84550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1FBD8B-7860-4E47-BD0F-06D7F53EF98B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1FBD8B-7860-4E47-BD0F-06D7F53EF98B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1FBD8B-7860-4E47-BD0F-06D7F53EF98B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1FBD8B-7860-4E47-BD0F-06D7F53EF98B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
