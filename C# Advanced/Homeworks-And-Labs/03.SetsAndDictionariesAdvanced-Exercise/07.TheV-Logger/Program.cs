@@ -47,7 +47,7 @@ namespace _07.TheV_Logger
 
             Console.WriteLine($"The V-Logger has a total of {dict.Count} vloggers in its logs.");
 
-            foreach ( var vlogger in dict.OrderByDescending(x => x.Value["followers"].Count).ThenBy(x => x.Value["following"].Count))
+            foreach (var vlogger in dict.OrderByDescending(x => x.Value["followers"].Count).ThenBy(x => x.Value["following"].Count))
             {
                 Console.WriteLine($"{count}. {vlogger.Key} : {vlogger.Value["followers"].Count} followers, {vlogger.Value["following"].Count} following");
 
