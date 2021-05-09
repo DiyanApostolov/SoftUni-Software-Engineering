@@ -13,9 +13,6 @@ namespace _01.Cooking
             int pastry = 75;
             int fruitPie = 100;
 
-            Queue<int> liquids = new Queue<int>();
-            Stack<int> ingredients = new Stack<int>();
-
             int[] liquidsInput = Console.ReadLine()
                 .Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
@@ -26,11 +23,8 @@ namespace _01.Cooking
                 .Select(int.Parse)
                 .ToArray();
 
-            for (int i = 0; i < liquidsInput.Length; i++)
-            {
-                liquids.Enqueue(liquidsInput[i]);
-                ingredients.Push(ingredientsInput[i]);
-            }
+            Queue<int> liquids = new Queue<int>(liquidsInput);
+            Stack<int> ingredients = new Stack<int>(ingredientsInput);
 
             var food = new SortedDictionary<string, int>();
             food.Add("Bread", 0);
@@ -46,25 +40,25 @@ namespace _01.Cooking
                 {
                     liquids.Dequeue();
                     ingredients.Pop();
-                    food["Bread"] += 1;
+                    food["Bread"]++;
                 }
                 else if (sum == cake)
                 {
                     liquids.Dequeue();
                     ingredients.Pop();
-                    food["Cake"] += 1;
+                    food["Cake"]++;
                 }
                 else if (sum == pastry)
                 {
                     liquids.Dequeue();
                     ingredients.Pop();
-                    food["Pastry"] += 1;
+                    food["Pastry"]++;
                 }
                 else if (sum == fruitPie)
                 {
                     liquids.Dequeue();
                     ingredients.Pop();
-                    food["Fruit Pie"] += 1;
+                    food["Fruit Pie"]++;
                 }
                 else
                 {
@@ -74,7 +68,7 @@ namespace _01.Cooking
                 }
             }
 
-            if (food["Bread"] > 0 && food["Cake"] > 0 && food["Pastry"] > 0 && food["Fruit Pie"] > 0)
+            if (food["Bread"] >= 1 && food["Cake"] >= 1 && food["Pastry"] >= 1 && food["Fruit Pie"] >= 1)
             {
                 Console.WriteLine("Wohoo! You succeeded in cooking all the food!");
             }
@@ -107,7 +101,5 @@ namespace _01.Cooking
                 Console.WriteLine($"{item.Key}: {item.Value}");
             }
         }
-
-        
     }
 }
