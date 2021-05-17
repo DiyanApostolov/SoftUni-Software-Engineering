@@ -8,22 +8,14 @@ namespace _01.SortEvenNumbers
     {
         static void Main(string[] args)
         {
-            List<int> evenNumbers = new List<int>();
-
-            int[] input = Console.ReadLine()
+            List<int> evenNumbers = Console.ReadLine()
                 .Split(',', StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
-                .ToArray();
+                .Where(x => x % 2 == 0)
+                .OrderBy(x => x)
+                .ToList();
 
-            foreach (var number in input)
-            {
-                if (number % 2 == 0)
-                {
-                    evenNumbers.Add(number);
-                }
-            }
-
-            Console.WriteLine(string.Join(',', evenNumbers.OrderBy(n => n)));
+            Console.WriteLine(string.Join(", ", evenNumbers.OrderBy(n => n)));
         }
     }
 }
