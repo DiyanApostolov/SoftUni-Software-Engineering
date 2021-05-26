@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.KnightsOfHonor", "02.Kni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.CustomMinFunction", "03.CustomMinFunction\03.CustomMinFunction.csproj", "{3EFB6BE7-8120-47F4-830E-43C57D733804}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.FindEvensOrOdds", "04.FindEvensOrOdds\04.FindEvensOrOdds.csproj", "{38BA0543-D162-49AB-8206-14398B304F64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.FindEvensOrOdds", "04.FindEvensOrOdds\04.FindEvensOrOdds.csproj", "{38BA0543-D162-49AB-8206-14398B304F64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.AppliedArithmetics", "05.AppliedArithmetics\05.AppliedArithmetics.csproj", "{C4011D6D-629A-4D39-932F-A70DB82DED25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.AppliedArithmetics", "05.AppliedArithmetics\05.AppliedArithmetics.csproj", "{C4011D6D-629A-4D39-932F-A70DB82DED25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ReverseAndExclude", "06.ReverseAndExclude\06.ReverseAndExclude.csproj", "{C2C0EFDB-0929-42B5-9890-EEE682E588F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.PredicateForNames", "07.PredicateForNames\07.PredicateForNames.csproj", "{06880B6A-70DA-49F4-A663-795D325040A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{C4011D6D-629A-4D39-932F-A70DB82DED25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4011D6D-629A-4D39-932F-A70DB82DED25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4011D6D-629A-4D39-932F-A70DB82DED25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2C0EFDB-0929-42B5-9890-EEE682E588F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2C0EFDB-0929-42B5-9890-EEE682E588F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2C0EFDB-0929-42B5-9890-EEE682E588F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2C0EFDB-0929-42B5-9890-EEE682E588F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06880B6A-70DA-49F4-A663-795D325040A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06880B6A-70DA-49F4-A663-795D325040A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06880B6A-70DA-49F4-A663-795D325040A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06880B6A-70DA-49F4-A663-795D325040A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
