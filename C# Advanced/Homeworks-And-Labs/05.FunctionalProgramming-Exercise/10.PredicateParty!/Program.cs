@@ -8,9 +8,10 @@ namespace _10.PredicateParty_
     {
         static void Main(string[] args)
         {
-            List<string> guests = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> guests = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .ToList();
             
-
             string input = Console.ReadLine();
 
             while (input != "Party!")
