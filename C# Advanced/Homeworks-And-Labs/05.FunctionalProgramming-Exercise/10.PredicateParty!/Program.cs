@@ -9,80 +9,32 @@ namespace _10.PredicateParty_
         static void Main(string[] args)
         {
             List<string> guests = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
-            Action<List<string>, string, string> removeGuest =
-                (list, criteria, argument) => 
-                {
-                    if (criteria == "StartsWith")
-                    {
-                        guests = guests.Where(g => !g.StartsWith(argument)).ToList();
-                    }
-                    else if (criteria == "EndsWith")
-                    {
-                        guests = guests.Where(g => !g.EndsWith(argument)).ToList();
-                    }
-                    else if (criteria == "Lenght")
-                    {
-                        int lenght = int.Parse(argument);
-                        guests = guests.Where(g => g.Length != lenght).ToList();
-                    }
-                };
-            Action<List<string>, string, string> doubleGuest =
-                (list, criteria, argument) =>
-                {
-                    if (criteria == "StartsWith")
-                    {
-                        for (int i = 0; i < guests.Count; i++)  
-                        {
-                            if (guests[i].StartsWith(argument))
-                            {
-                                guests.Insert(i + 1, guests[i]);
-                                i++;
-                            }
-                        }
-                    }
-                    else if (criteria == "EndsWith")
-                    {
-                        for (int i = 0; i < guests.Count; i++)
-                        {
-                            if (guests[i].EndsWith(argument))
-                            {
-                                guests.Insert(i + 1, guests[i]);
-                                i++;
-                            }
-                        }
-                    }
-                    else if (criteria == "Length")
-                    {
-                        int lenght = int.Parse(argument);
-                        for (int i = 0; i < guests.Count; i++)
-                        {
-                            if (guests[i].Length == lenght)
-                            {
-                                guests.Insert(i + 1, guests[i]);
-                                i++;
-                            }
-                        }
-                    } 
-                };
+            
 
-            string command = Console.ReadLine();
+            string input = Console.ReadLine();
 
-            while (command != "Party!")
+            while (input != "Party!")
             {
-                string[] cmdArg = command.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                string[] cmdArg = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                string command = cmdArg[0];
                 string criteria = cmdArg[1];
                 string argument = cmdArg[2];
 
-                if (cmdArg[0] == "Remove")
+                if (command == "Remove")
                 {
-                    removeGuest(guests, criteria, argument);
+                    Predicate<string> predicate = GetPredicate(criteria, argument);
+
+                    guests.RemoveAll(predicate);
                 }
-                else if (cmdArg[0] == "Double")
+                else if (command == "Double")
                 {
-                    doubleGuest(guests, criteria, argument);
+                    Func<string, bool> filterFunc = GetFilter(criteria, argument);
+                    List<string> filteredNames = guests.Where(filterFunc).ToList();
+
+                    guests.InsertRange(0, filteredNames);
                 }
 
-                command = Console.ReadLine();
+                input = Console.ReadLine();
             }
 
             if (guests.Any())
@@ -92,6 +44,46 @@ namespace _10.PredicateParty_
             else
             {
                 Console.WriteLine("Nobody is going to the party!");
+            }
+        }
+
+        private static Func<string, bool> GetFilter(string criteria, string argument)
+        {
+            if (criteria == "StartsWith")
+            {
+                return x => x.StartsWith(argument);
+            }
+            else if (criteria == "EndsWith")
+            {
+                return x => x.EndsWith(argument);
+            }
+            else if (criteria == "Length")
+            {
+                return x => x.Length == int.Parse(argument);
+            }
+            else
+            {
+                return x => true;
+            }
+        }
+
+        private static Predicate<string> GetPredicate(string criteria, string argument)
+        {
+            if (criteria == "StartsWith")
+            {
+                return x => x.StartsWith(argument);
+            }
+            else if (criteria == "EndsWith")
+            {
+                return x => x.EndsWith(argument);
+            }
+            else if (criteria == "Length")
+            {
+                return x => x.Length == int.Parse(argument);
+            }
+            else
+            {
+                return x => true;
             }
         }
     }
