@@ -78,7 +78,7 @@ namespace _02.SuperMario
                         break;
                     case 'D':
 
-                        if (marioCol + 1 >= n)
+                        if (marioCol + 1 >= tower[0].Length)
                         {
                             continue;
                         }
