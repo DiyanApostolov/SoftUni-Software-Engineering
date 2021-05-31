@@ -52,11 +52,11 @@
 
         public void Drive(double distance)
         {
-            double fuelToCOnsume = distance * FuelConsumption;
+            double fuelToCOnsume = (distance * FuelConsumption) / 100;
 
-            if (FuelQuantity - (fuelToCOnsume * distance) / 100 >= 0)
+            if (FuelQuantity - fuelToCOnsume >= 0)
             {
-                FuelQuantity -= (fuelToCOnsume * distance) / 100; 
+                FuelQuantity -= fuelToCOnsume; 
             }
             else
             {
