@@ -90,27 +90,20 @@ namespace _02.Wharships
                                     totalCountShipsDestroyed++;
                                 }
                             }
-
-                            if (playerOneShips == 0)
-                            {
-                                isSomeoneWon = true;
-                                break;
-                            }
-                            else if (playerTwoShips == 0)
-                            {
-                                isSomeoneWon = true;
-                                break;
-                            }
                         }
 
-                        if (isSomeoneWon)
+                        if (playerOneShips == 0)
                         {
+                            isSomeoneWon = true;
+                            break;
+                        }
+                        else if (playerTwoShips == 0)
+                        {
+                            isSomeoneWon = true;
                             break;
                         }
                     }
                 }
-
-                
 
                 if (playerOneShips <= 0)
                 {
