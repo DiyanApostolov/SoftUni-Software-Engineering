@@ -9,10 +9,10 @@ namespace CarManufacturer
             Engine v12 = new Engine(650, 4200);
             Tire[] tires = new Tire[]
             {
-                new Tire(2018, 2.5),
-                new Tire(2018, 2.5),
-                new Tire(2018, 2.8),
-                new Tire(2018, 2.8)
+                new Tire(1, 2.5),
+                new Tire(1, 2.5),
+                new Tire(2, 2.8),
+                new Tire(2, 2.8)
             };
 
             Car bmw = new Car("BMW", "M5", 2020, 100, 9.5, v12, tires);
