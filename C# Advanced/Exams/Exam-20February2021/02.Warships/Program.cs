@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace _02.Wharships
 {
@@ -12,240 +12,132 @@ namespace _02.Wharships
             char[,] matrix = new char[n, n];
 
             string[] input = Console.ReadLine()
-                .Replace(" ", "")
                 .Split(',', StringSplitOptions.RemoveEmptyEntries);
 
-            int mineRow = int.MinValue;
-            int mineCol = int.MinValue;
-            List<string> playerOneShips = new List<string>();
-            List<string> playerTwoShips = new List<string>();
-
+            int playerOneShips = 0;
+            int playerTwoShips = 0;
             int totalCountShipsDestroyed = 0;
 
             for (int row = 0; row < n; row++)
             {
-                string rowData = Console.ReadLine().Replace(" ", "");
+                char[] rowData = Console.ReadLine()
+                    .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                    .Select(char.Parse)
+                    .ToArray();
 
                 for (int col = 0; col < n; col++)
                 {
                     matrix[row, col] = rowData[col];
 
-                    if (matrix[row, col] == '#')
+                    if (matrix[row, col] == '<')
                     {
-                        mineRow = row;
-                        mineCol = col;
-                    }
-                    else if (matrix[row, col] == '<')
-                    {
-                        playerOneShips.Add($"{row}{col}");
+                        playerOneShips++;
                     }
                     else if (matrix[row, col] == '>')
                     {
-                        playerTwoShips.Add($"{row}{col}");
+                        playerTwoShips++;
                     }
                 }
             }
 
+            bool isSomeoneWon = false;
+
             for (int i = 0; i < input.Length; i++)
             {
-                string currentCoordinate = input[i];
+                int[] currentCoordinate = input[i]
+                    .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse)
+                    .ToArray();
+                int currRow = currentCoordinate[0];
+                int currCol = currentCoordinate[1];
 
-                if (currentCoordinate.StartsWith('-'))
+                if (currRow < 0 || currRow >= n || currCol < 0 || currCol >= n)
                 {
                     continue;
                 }
 
-                int currRow = int.Parse(currentCoordinate[0].ToString());
-                int currCol = int.Parse(currentCoordinate[1].ToString());
-
-                if (currRow >= 0 && currRow < n &&
-                    currCol >= 0 && currCol < n)
+                if (IsPlayerOneShip(matrix, currRow, currCol))
                 {
-                    if (playerOneShips.Contains(currentCoordinate))
+                    playerOneShips--;
+                    matrix[currRow, currCol] = 'X';
+                    totalCountShipsDestroyed++;
+                }
+                else if (IsPlayerTwoShip(matrix, currRow, currCol))
+                {
+                    playerTwoShips--;
+                    matrix[currRow, currCol] = 'X';
+                    totalCountShipsDestroyed++;
+                }
+                else if (matrix[currRow, currCol] == '#')
+                {
+                    for (int row = currRow - 1; row <= currRow + 1; row++)
                     {
-                        playerOneShips.Remove(currentCoordinate);
-                        matrix[currRow, currCol] = 'X';
-                        totalCountShipsDestroyed++;
-                    }
-                    else if (playerTwoShips.Contains(currentCoordinate))
-                    {
-                        playerTwoShips.Remove(currentCoordinate);
-                        matrix[currRow, currCol] = 'X';
-                        totalCountShipsDestroyed++;
-                    }
-                    else if (matrix[currRow, currCol] == '#')
-                    {
-                        if (currCol - 1 >= 0)
+                        for (int col = currCol - 1; col <= currCol + 1; col++)
                         {
-                            // left up diagonal cell
-                            if (currRow - 1 >= 0)
+                            if (row >= 0 && row < n &&
+                                col >= 0 && col < n)
                             {
-                                if (matrix[currRow - 1, currCol - 1] == '>')
+                                if (IsPlayerOneShip(matrix, row, col))
                                 {
-                                    playerTwoShips.Remove($"{currRow - 1}{currCol - 1}");
-                                    matrix[currRow - 1, currCol - 1] = 'X';
+                                    playerOneShips--;
+                                    matrix[row, col] = 'X';
                                     totalCountShipsDestroyed++;
                                 }
-                                else if (matrix[currRow - 1, currCol - 1] == '<')
+                                else if (IsPlayerTwoShip(matrix, row, col))
                                 {
-                                    playerOneShips.Remove($"{currRow - 1}{currCol - 1}");
-                                    matrix[currRow - 1, currCol - 1] = 'X';
+                                    playerTwoShips--;
+                                    matrix[row, col] = 'X';
                                     totalCountShipsDestroyed++;
                                 }
                             }
 
-                            // left cell
-                            if (matrix[currRow, currCol - 1] == '>')
+                            if (playerOneShips == 0)
                             {
-                                playerTwoShips.Remove($"{currRow}{currCol - 1}");
-                                matrix[currRow, currCol - 1] = 'X';
-                                totalCountShipsDestroyed++;
+                                isSomeoneWon = true;
+                                break;
                             }
-                            else if (matrix[currRow, currCol - 1] == '<')
+                            else if (playerTwoShips == 0)
                             {
-                                playerOneShips.Remove($"{currRow}{currCol - 1}");
-                                matrix[currRow, currCol - 1] = 'X';
-                                totalCountShipsDestroyed++;
-                            }
-
-                            // left down diagonal cell
-                            if (currRow + 1 < n)
-                            {
-                                if (matrix[currRow + 1, currCol - 1] == '>')
-                                {
-                                    playerTwoShips.Remove($"{currRow + 1}{currCol - 1}");
-                                    matrix[currRow + 1, currCol - 1] = 'X';
-                                    totalCountShipsDestroyed++;
-                                }
-                                else if (matrix[currRow + 1, currCol - 1] == '<')
-                                {
-                                    playerOneShips.Remove($"{currRow + 1}{currCol - 1}");
-                                    matrix[currRow + 1, currCol - 1] = 'X';
-                                    totalCountShipsDestroyed++;
-                                }
+                                isSomeoneWon = true;
+                                break;
                             }
                         }
 
-                            // up cell
-                        if (currRow - 1 >= 0)
+                        if (isSomeoneWon)
                         {
-                            
-                            if (matrix[currRow - 1, currCol] == '>')
-                            {
-                                playerTwoShips.Remove($"{currRow - 1}{currCol}");
-                                matrix[currRow - 1, currCol] = 'X';
-                                totalCountShipsDestroyed++;
-                            }
-                            else if (matrix[currRow - 1, currCol] == '<')
-                            {
-                                playerOneShips.Remove($"{currRow - 1}{currCol}");
-                                matrix[currRow - 1, currCol] = 'X';
-                                totalCountShipsDestroyed++;
-                            }
+                            break;
                         }
-
-                          // down cell
-                        if (currRow + 1 < n)
-                        {
-                            if (matrix[currRow + 1, currCol] == '>')
-                            {
-                                playerTwoShips.Remove($"{currRow + 1}{currCol}");
-                                matrix[currRow + 1, currCol] = 'X';
-                                totalCountShipsDestroyed++;
-                            }
-                            else if (matrix[currRow + 1, currCol] == '<')
-                            {
-                                playerOneShips.Remove($"{currRow + 1}{currCol}");
-                                matrix[currRow + 1, currCol] = 'X';
-                                totalCountShipsDestroyed++;
-                            }
-                        }
-
-                        if (currCol + 1 < n)
-                        {
-                            //right up diagonal cell
-                            if (currRow - 1 >= 0)
-                            {
-                                if (matrix[currRow - 1, currCol + 1] == '>')
-                                {
-                                    playerTwoShips.Remove($"{currRow - 1}{currCol + 1}");
-                                    matrix[currRow - 1, currCol + 1] = 'X';
-                                    totalCountShipsDestroyed++;
-                                }
-                                else if (matrix[currRow - 1, currCol + 1] == '<')
-                                {
-                                    playerOneShips.Remove($"{currRow - 1}{currCol + 1}");
-                                    matrix[currRow - 1, currCol + 1] = 'X';
-                                    totalCountShipsDestroyed++;
-                                }
-                            }
-
-                            //right cell
-                            if (matrix[currRow, currCol + 1] == '>')
-                            {
-                                playerTwoShips.Remove($"{currRow}{currCol + 1}");
-                                matrix[currRow, currCol + 1] = 'X';
-                                totalCountShipsDestroyed++;
-                            }
-                            else if (matrix[currRow, currCol + 1] == '<')
-                            {
-                                playerOneShips.Remove($"{currRow}{currCol + 1}");
-                                matrix[currRow, currCol + 1] = 'X';
-                                totalCountShipsDestroyed++;
-                            }
-
-                            //right down diagonal cell
-                            if (currRow + 1 < n)
-                            {
-                                if (matrix[currRow + 1, currCol + 1] == '>')
-                                {
-                                    playerTwoShips.Remove($"{currRow + 1}{currCol + 1}");
-                                    matrix[currRow + 1, currCol + 1] = 'X';
-                                    totalCountShipsDestroyed++;
-                                }
-                                else if (matrix[currRow + 1, currCol + 1] == '<')
-                                {
-                                    playerOneShips.Remove($"{currRow + 1}{currCol + 1}");
-                                    matrix[currRow + 1, currCol + 1] = 'X';
-                                    totalCountShipsDestroyed++;
-                                }
-                            }
-                        }
-
                     }
+                }
 
-                    if (playerOneShips.Count <= 0)
-                    {
-                        Console.WriteLine($"Player Two has won the game! {totalCountShipsDestroyed} ships have been sunk in the battle.");
-                        break;
-                    }
-                    else if (playerTwoShips.Count <= 0)
-                    {
-                        Console.WriteLine($"Player One has won the game! {totalCountShipsDestroyed} ships have been sunk in the battle.");
-                        break;
-                    }
+                
 
-                    
+                if (playerOneShips <= 0)
+                {
+                    Console.WriteLine($"Player Two has won the game! {totalCountShipsDestroyed} ships have been sunk in the battle.");
+                    break;
+                }
+                else if (playerTwoShips <= 0)
+                {
+                    Console.WriteLine($"Player One has won the game! {totalCountShipsDestroyed} ships have been sunk in the battle.");
+                    break;
                 }
             }
 
-            if (playerOneShips.Count > 0 && playerTwoShips.Count > 0)
+            if (playerOneShips > 0 && playerTwoShips > 0)
             {
-                Console.WriteLine($"It's a draw! Player One has {playerOneShips.Count} ships left. Player Two has {playerTwoShips.Count} ships left.");
+                Console.WriteLine($"It's a draw! Player One has {playerOneShips} ships left. Player Two has {playerTwoShips} ships left.");
             }
+        }
 
-            //Console.WriteLine();
+        public static bool IsPlayerOneShip(char[,] field, int row, int col)
+        {
+            return field[row, col] == '<';
+        }
 
-
-            //for (int row = 0; row < n; row++)
-            //{
-            //    for (int col = 0; col < n; col++)
-            //    {
-            //        Console.Write($"{matrix[row, col]} ");
-            //    }
-            //    Console.WriteLine();
-            //}
-            
+        public static bool IsPlayerTwoShip(char[,] field, int row, int col)
+        {
+            return field[row, col] == '>';
         }
     }
 }
