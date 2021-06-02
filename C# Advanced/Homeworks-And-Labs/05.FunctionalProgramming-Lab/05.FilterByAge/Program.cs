@@ -8,65 +8,53 @@ namespace _05.FilterByAge
     {
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine());
+            Func<(string name, int age), int, bool> younger = (person, age) => person.age < age;
+            Func<(string name, int age), int, bool> older = (person, age) => person.age >= age;
 
-            Dictionary<string, int> people = new Dictionary<string, int>();
+            int n = int.Parse(Console.ReadLine());
+            List<(string name, int age)> people = new List<(string name, int age)>();
 
             for (int i = 0; i < n; i++)
             {
-                string[] input = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries);
-                string name = input[0];
-                int age = int.Parse(input[1]);
-
-                people.Add(name, age);
+                string[] person = Console.ReadLine()
+                    .Split(", ", StringSplitOptions.RemoveEmptyEntries);
+                people.Add((person[0], int.Parse(person[1])));
             }
 
             string condition = Console.ReadLine();
-            int ageLimit = int.Parse(Console.ReadLine());
-            string criterion = Console.ReadLine();
+            int filter = int.Parse(Console.ReadLine());
+            string[] printFormat = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-            var output = FilterByAge(people, condition, ageLimit);
-
-            PrintOutput(output, criterion);
-        }
-
-        private static void PrintOutput(Dictionary<string, int> output, string criterion)
-        {
-            if (criterion == "name age")
+            switch (condition)
             {
-                foreach (var people in output)
+                case "younger":
+                    people = people
+                        .Where(p => younger(p, filter))
+                        .ToList();
+                    break;
+                case "older":
+                    people = people
+                        .Where(p => older(p, filter))
+                        .ToList();
+                    break;
+            }
+
+            foreach (var person in people)
+            {
+                List<string> output = new List<string>();
+
+                if (printFormat.Contains("name"))
                 {
-                    Console.WriteLine($"{people.Key} - {people.Value}");
+                    output.Add(person.name);
                 }
-            }
-            else
-            {
-                foreach (var people in output)
-                {
-                    if (criterion == "name")
-                    {
-                        Console.WriteLine(people.Key);
-                    }
-                    else if (criterion == "age")
-                    {
-                        Console.WriteLine(people.Value);
-                    }
-                }
-            }
-            
-        }
 
-        private static Dictionary<string, int> FilterByAge(Dictionary<string, int> people, string condition, int ageLimit)
-        {
-            if (condition == "older")
-            {
-                Dictionary<string, int> output = people.Where(p => p.Value >= ageLimit).ToDictionary(k => k.Key, v=> v.Value);
-                return output;
-            }
-            else
-            {
-                Dictionary<string, int> output = people.Where(p => p.Value < ageLimit).ToDictionary(k => k.Key, v => v.Value);
-                return output;
+                if (printFormat.Contains("age"))
+                {
+                    output.Add(person.age.ToString());
+                }
+
+                Console.WriteLine(string.Join(" - ", output));
             }
         }
     }
