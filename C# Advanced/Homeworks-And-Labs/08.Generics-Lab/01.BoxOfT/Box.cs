@@ -2,13 +2,13 @@
 
 namespace BoxOfT
 {
-    public class BoxOfT<T>
+    public class Box<T>
     {
         private Stack<T> elements;
 
         public int Count { get { return this.elements.Count; } }
 
-        public BoxOfT()
+        public Box()
         {
             this.elements = new Stack<T>();
         }

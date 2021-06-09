@@ -6,7 +6,7 @@ namespace BoxOfT
     {
         static void Main(string[] args)
         {
-            BoxOfT<int> box = new BoxOfT<int>();
+            Box<int> box = new Box<int>();
 
             box.Add(1);
             box.Add(2);
