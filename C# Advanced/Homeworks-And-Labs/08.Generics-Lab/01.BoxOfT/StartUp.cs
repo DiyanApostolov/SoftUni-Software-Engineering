@@ -4,7 +4,7 @@ namespace BoxOfT
 {
     public class StartUp
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Box<int> box = new Box<int>();
 
