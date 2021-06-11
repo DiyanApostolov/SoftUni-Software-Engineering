@@ -24,7 +24,21 @@
             Console.WriteLine(dismissed); // Dismissed student Peter Parker
             string dismissedTwo = classroom.DismissStudent("Ellie", "Goulding");
             Console.WriteLine(dismissedTwo); // Student not found
-
+            // Subject info
+            string subjectInfo = classroom.GetSubjectInfo("Algebra");
+            Console.WriteLine(subjectInfo);
+            // Subject: Algebra
+            // Students:
+            // Sarah Smith
+            // Sam Winchester
+            string anotherInfo = classroom.GetSubjectInfo("Art");
+            Console.WriteLine(anotherInfo); // No students enrolled for the subject
+            // Get Students Count
+            Console.WriteLine(classroom.GetStudentsCount());
+            // Get Student
+            Console.WriteLine(classroom.GetStudent("Dean", "Winchester"));
+            // Student: First Name = Dean, Last Name = Winchester, Subject = Music
+            Console.WriteLine(classroom.Count);
 
         }
     }
