@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Scheduling", "01.Scheduling\01.Scheduling.csproj", "{1D3DA1E8-553D-4F36-A703-7217D8129D5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.Garden", "02.Garden\02.Garden.csproj", "{3EE64926-37A9-4E36-A324-07ADCB4AC3D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.Garden", "02.Garden\02.Garden.csproj", "{3EE64926-37A9-4E36-A324-07ADCB4AC3D1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassroomProject", "03.Classroom\ClassroomProject.csproj", "{9704F073-5792-4586-85FD-6700A79977D2}"
 EndProject
