@@ -8,9 +8,6 @@ namespace CocktailParty
     public class Cocktail
     {
         Dictionary<string, Ingredient> Ingredients = new Dictionary<string, Ingredient>();
-
-        public int CurrentAlcoholLevel = 0;
-
         public Cocktail(string name, int capacity, int maxAlcoholLevel)
         {
             Name = name;
@@ -21,6 +18,7 @@ namespace CocktailParty
         public string Name { get; set; }
         public int Capacity { get; set; }
         public int MaxAlcoholLevel { get; set; }
+        public int CurrentAlcoholLevel { get; set; } = 0;
 
         public void Add(Ingredient ingredient)
         {
