@@ -31,8 +31,27 @@
             cocktail.Add(milk);
 
             // Find ingredients
-            Console.WriteLine(cocktail.FindIngredient("milk"));
+            Console.WriteLine(cocktail.FindIngredient("Milk"));
 
+            //GetMostAlcoholicIngredient
+            Console.WriteLine(cocktail.GetMostAlcoholicIngredient());
+            //Ingredient: Vodka
+            //Quantity: 5
+            //Alcohol: 2
+
+            //CurrentAlcoholLevel
+            Console.WriteLine(cocktail.CurrentAlcoholLevel); //2
+
+            //Print Cocktail report
+            Console.WriteLine(cocktail.Report());
+
+            //Cocktail: Pina Colada - Current Alcohol Level: 2
+            //Ingredient: Vokda
+            //Quantity: 5
+            //Alcohol: 2
+            //Ingredient: Milk
+            //Quantity: 5
+            //Alcohol: 0
         }
     }
 }

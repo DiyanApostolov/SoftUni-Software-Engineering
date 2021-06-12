@@ -1,11 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Collections.Generic;
+using System.Text;
 
 namespace CocktailParty
 {
     public class Cocktail
     {
-        Dictionary<string, Ingredient> ingredients = new Dictionary<string, Ingredient>();
+        Dictionary<string, Ingredient> Ingredients = new Dictionary<string, Ingredient>();
+
+        public int CurrentAlcoholLevel = 0;
+
         public Cocktail(string name, int capacity, int maxAlcoholLevel)
         {
             Name = name;
@@ -19,18 +24,21 @@ namespace CocktailParty
 
         public void Add(Ingredient ingredient)
         {
-            if (!ingredients.ContainsKey(ingredient.Name) 
-                && ingredients.Count < Capacity)
+            if (!Ingredients.ContainsKey(ingredient.Name) 
+                && Ingredients.Count < Capacity
+                && CurrentAlcoholLevel + ingredient.Alcohol <= MaxAlcoholLevel)
             {
-                ingredients.Add(ingredient.Name, ingredient);
+                Ingredients.Add(ingredient.Name, ingredient);
+                CurrentAlcoholLevel += ingredient.Alcohol;
             }
         }
 
         public bool Remove(string name)
         {
-            if (ingredients.ContainsKey(name))
+            if (Ingredients.ContainsKey(name))
             {
-                ingredients.Remove(name);
+                CurrentAlcoholLevel -= Ingredients[name].Alcohol;
+                Ingredients.Remove(name);
                 return true;
             }
             else
@@ -41,9 +49,9 @@ namespace CocktailParty
 
         public Ingredient FindIngredient(string name)
         {
-            if (ingredients.ContainsKey(name))
+            if (Ingredients.ContainsKey(name))
             {
-                return ingredients[name];
+                return Ingredients[name];
             }
 
             return null;
@@ -51,7 +59,30 @@ namespace CocktailParty
 
         public Ingredient GetMostAlcoholicIngredient()
         {
-            Ingredient output = ingredients.FirstOrDefault()
+            Ingredient mostAlcoholic = null;
+
+            foreach (var item in Ingredients.OrderByDescending(i => i.Value.Alcohol))
+            {
+                mostAlcoholic = new Ingredient(item.Value.Name, item.Value.Alcohol, item.Value.Quantity);
+                break;
+            }
+
+            return mostAlcoholic;
+        }
+
+        public string Report()
+        {
+            StringBuilder sb = new StringBuilder();
+            
+            sb.AppendLine($"Cocktail: {this.Name} - Current Alcohol Level: {this.CurrentAlcoholLevel}");
+            foreach (var ingredient in Ingredients)
+            {
+                sb.AppendLine($"Ingredient: {ingredient.Value.Name}");
+                sb.AppendLine($"Quantity: {ingredient.Value.Quantity}");
+                sb.AppendLine($"Alcohol: {ingredient.Value.Alcohol}");
+            }
+
+            return sb.ToString().TrimEnd();
         }
     }
 }
