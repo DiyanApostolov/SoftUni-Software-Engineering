@@ -21,7 +21,7 @@ namespace CocktailParty
             sb.AppendLine($"Ingredient: {Name}");
             sb.AppendLine($"Quantity: {Quantity}");
             sb.AppendLine($"Alcohol: {Alcohol}");
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
     }
 }
