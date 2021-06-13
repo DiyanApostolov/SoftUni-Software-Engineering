@@ -1,16 +1,16 @@
 ﻿namespace ClassroomProject
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     public class Classroom
     {
-        List<Student> students;
-
+        readonly List<Student> students = new List<Student>();
+        
         public Classroom(int capacity)
         {
             Capacity = capacity;
-            students = new List<Student>(Capacity);
         }
 
         public int Capacity { get; set; }
@@ -35,18 +35,9 @@
 
         public string DismissStudent(string firstName, string lastName)
         {
-            Student studentToRemove = new Student(firstName, lastName, string.Empty);
+            Student studentToRemove = students.FirstOrDefault(s => s.FirstName == firstName && s.LastName == lastName);
 
-            foreach (var student in students)
-            {
-                if (student.FirstName == firstName && student.LastName == lastName)
-                {
-                    studentToRemove = student;
-                    break;
-                }
-            }
-
-            if (students.Contains(studentToRemove))
+            if (studentToRemove != null)
             {
                 students.Remove(studentToRemove);
                 return $"Dismissed student {firstName} {lastName}";
@@ -85,23 +76,14 @@
 
         public int GetStudentsCount()
         {
-            return Count;
+            return students.Count;
         }
 
-        public string GetStudent(string firstName, string lastName)
+        public Student GetStudent(string firstName, string lastName)
         {
-            Student getStudent = new Student(firstName, lastName, string.Empty);
+            Student currentStudent = students.FirstOrDefault(s => s.FirstName == firstName && s.LastName == lastName);
 
-            foreach (var student in students)
-            {
-                if (student.FirstName == firstName && student.LastName == lastName)
-                {
-                    getStudent = student;
-                    break;
-                }
-            }
-
-            return $"Student: First Name = {getStudent.FirstName}, Last Name = {getStudent.LastName}, Subject = {getStudent.Subject}";
+            return currentStudent;
         }
     }
 }
