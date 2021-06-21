@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using BattleCards.Data;
+    using BattleCards.Services;
     using Microsoft.EntityFrameworkCore;
     using MyWebServer;
     using MyWebServer.Controllers;
@@ -15,7 +16,12 @@
                     .MapStaticFiles()
                     .MapControllers())
                 .WithServices(services => services
-                    .Add<IViewEngine, CompilationViewEngine>())
+                    .Add<IValidator, Validator>()
+                    .Add<IPasswordHasher, PasswordHasher>()
+                    .Add<IViewEngine, CompilationViewEngine>()
+                    .Add<BattleCardsDbContext>())
+                .WithConfiguration<BattleCardsDbContext>(context => context
+                    .Database.Migrate())
                 .Start();
     }
 }
