@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using CarShop.Data;
+    using CarShop.Services;
     using Microsoft.EntityFrameworkCore;
     using MyWebServer;
     using MyWebServer.Controllers;
@@ -17,6 +18,8 @@
                     .MapControllers())
                 .WithServices(services => services
                     .Add<IViewEngine, CompilationViewEngine>()
+                    .Add<IValidator, Validator>()
+                    .Add<IPasswordHasher, PasswordHasher>()
                     .Add<CarShopDbContext>())
                 .WithConfiguration<CarShopDbContext>(context => context
                     .Database.Migrate())
