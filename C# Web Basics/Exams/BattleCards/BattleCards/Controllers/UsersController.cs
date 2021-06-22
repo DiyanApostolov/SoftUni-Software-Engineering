@@ -57,7 +57,7 @@
 
             data.SaveChanges();
 
-            return Redirect("/Users/Login");
+            return Redirect("/Home/Index");
         }
 
         public HttpResponse Login() => View();
