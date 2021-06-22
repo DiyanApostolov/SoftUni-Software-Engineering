@@ -1,6 +1,8 @@
 ﻿namespace BattleCards.Services
 {
+    using BattleCards.Models;
     using BattleCards.Models.Users;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
@@ -39,6 +41,39 @@
             }
 
             return errors;
+        }
+
+        public ICollection<string> ValidateCard(CardFormModel model)
+        {
+            var errors = new List<string>();
+
+            if (model.Name.Length < MinCardName || model.Name.Length > MaxCardName)
+            {
+                errors.Add($"Name '{model.Name}' is not valid. Should be at least {MinCardName} symbols and maximum {MaxCardName} symbols.");
+            }
+
+            if (!Uri.IsWellFormedUriString(model.Image, UriKind.Absolute))
+            {
+                errors.Add("Invalid url address.");
+            }
+
+            if (model.Description.Length > MaxCardDescription)
+            {
+                errors.Add($"Description cannot be more than {MaxCardDescription} symbols.");
+            }
+
+            if (model.Attack < AttackAndHealthMinValue)
+            {
+                errors.Add("Attack cannot be a negative number!");
+            }
+
+            if (model.Health < AttackAndHealthMinValue)
+            {
+                errors.Add("Health cannot be a negative number!");
+            }
+
+            return errors;
+
         }
     }
 }

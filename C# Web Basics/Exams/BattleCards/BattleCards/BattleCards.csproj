@@ -15,7 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Views\Shared\_Layout.html" />
+	  <None Remove="Views\Layout.html" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -28,6 +28,10 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\MyWebServer\MyWebServer.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Views\Shared\" />
 	</ItemGroup>
 
 </Project>

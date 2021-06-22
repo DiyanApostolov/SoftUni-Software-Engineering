@@ -12,6 +12,7 @@
         public const int MinCardName = 5;
         public const int MaxCardName = 15;
         public const int MaxCardDescription = 200;
+        public const int AttackAndHealthMinValue = 0;
 
         public const int CommitMinDescription = 5;
     }
