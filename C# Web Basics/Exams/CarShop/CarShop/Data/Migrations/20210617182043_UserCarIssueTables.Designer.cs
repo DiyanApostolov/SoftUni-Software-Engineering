@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarShop.Data.Migrations
 {
     [DbContext(typeof(CarShopDbContext))]
-    [Migration("20210618194246_UserCarIssueTables")]
+    [Migration("20210617182043_UserCarIssueTables")]
     partial class UserCarIssueTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

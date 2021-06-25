@@ -7,9 +7,8 @@
     using MyWebServer;
     using MyWebServer.Controllers;
     using MyWebServer.Results.Views;
-    
 
-    public class StartUp
+    public class Startup
     {
         public static async Task Main()
             => await HttpServer
@@ -17,10 +16,10 @@
                     .MapStaticFiles()
                     .MapControllers())
                 .WithServices(services => services
-                    .Add<IViewEngine, CompilationViewEngine>()
+                    .Add<CarShopDbContext>()
                     .Add<IValidator, Validator>()
                     .Add<IPasswordHasher, PasswordHasher>()
-                    .Add<CarShopDbContext>())
+                    .Add<IViewEngine, CompilationViewEngine>())
                 .WithConfiguration<CarShopDbContext>(context => context
                     .Database.Migrate())
                 .Start();

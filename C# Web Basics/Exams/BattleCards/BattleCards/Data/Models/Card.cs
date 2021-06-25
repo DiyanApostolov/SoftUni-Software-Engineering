@@ -10,7 +10,7 @@
         [Key]
         [Required]
         [MaxLength(IdMaxLength)]
-        public string Id { get; init; } = Guid.NewGuid().ToString();
+        public int Id { get; set; } 
 
         [Required]
         [MaxLength(MaxCardName)]
@@ -32,7 +32,7 @@
         [MaxLength(MaxCardDescription)]
         public string Description { get; set; }
 
-        public IEnumerable<UserCard> UserCard { get; init; } = new List<UserCard>();
+        public ICollection<UserCard> Users { get; set; } = new List<UserCard>();
 
     }
 }

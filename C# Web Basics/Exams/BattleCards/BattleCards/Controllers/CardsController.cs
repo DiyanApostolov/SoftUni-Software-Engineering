@@ -55,9 +55,9 @@
             this.data.Cards.Add(card);
             this.data.SaveChanges();
 
-            this.data.UserCards.Add(new UserCard
+            this.data.UsersCards.Add(new UserCard
             { 
-                Id = user.Id,
+                UserId = user.Id,
                 CardId = card.Id
             });
 
@@ -69,8 +69,8 @@
         [Authorize]
         public HttpResponse Collection()
         {
-            var collection = this.data.UserCards
-                .Where(uc => uc.Id == this.User.Id)
+            var collection = this.data.UsersCards
+                .Where(uc => uc.UserId == this.User.Id)
                 .Select(c => c.Card)
                 .Select(c => new CardListingModel
                 {
@@ -86,5 +86,23 @@
             return this.View(collection);
         }
 
+        [Authorize]
+        public HttpResponse AddToCollection(int cardId)
+        {
+            if (this.data.UsersCards.Any(us => us.CardId == cardId && us.UserId == this.User.Id))
+            {
+                return this.Redirect("/Cards/All");
+            }
+
+            this.data.UsersCards.Add(new UserCard
+            {
+                UserId = this.User.Id,
+                CardId = cardId
+            });
+
+            this.data.SaveChanges();
+
+            return this.Redirect("/Cards/All");
+        }
     }
 }

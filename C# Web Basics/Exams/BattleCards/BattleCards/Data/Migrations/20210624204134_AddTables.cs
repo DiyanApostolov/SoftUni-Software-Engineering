@@ -2,7 +2,7 @@
 
 namespace BattleCards.Data.Migrations
 {
-    public partial class UsersCardsUserCardsTables : Migration
+    public partial class AddTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,7 +10,8 @@ namespace BattleCards.Data.Migrations
                 name: "Cards",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    Id = table.Column<int>(type: "int", maxLength: 40, nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Keyword = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -38,45 +39,45 @@ namespace BattleCards.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserCards",
+                name: "UsersCards",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(40)", nullable: true),
-                    CardId = table.Column<string>(type: "nvarchar(40)", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId1 = table.Column<string>(type: "nvarchar(40)", nullable: false),
+                    CardId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserCards", x => x.Id);
+                    table.PrimaryKey("PK_UsersCards", x => x.UserId);
                     table.ForeignKey(
-                        name: "FK_UserCards_Cards_CardId",
+                        name: "FK_UsersCards_Cards_CardId",
                         column: x => x.CardId,
                         principalTable: "Cards",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserCards_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_UsersCards_Users_UserId1",
+                        column: x => x.UserId1,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserCards_CardId",
-                table: "UserCards",
+                name: "IX_UsersCards_CardId",
+                table: "UsersCards",
                 column: "CardId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserCards_UserId",
-                table: "UserCards",
-                column: "UserId");
+                name: "IX_UsersCards_UserId1",
+                table: "UsersCards",
+                column: "UserId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserCards");
+                name: "UsersCards");
 
             migrationBuilder.DropTable(
                 name: "Cards");

@@ -11,7 +11,7 @@
         [Key]
         [Required]
         [MaxLength(IdMaxLength)]
-        public string Id { get; init; } = Guid.NewGuid().ToString();
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         [Required]
         [MaxLength(DefaultMaxLength)]
@@ -23,7 +23,7 @@
         [Required]
         public string Password { get; set; }
 
-        public IEnumerable<UserCard> UserCard { get; init; } = new List<UserCard>();
+        public ICollection<UserCard> Cards { get; set; } = new HashSet<UserCard>();
 
     }
 }

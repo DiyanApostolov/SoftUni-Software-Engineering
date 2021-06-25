@@ -5,11 +5,11 @@
 
     public class BattleCardsDbContext : DbContext
     {
-        public DbSet<User> Users { get; init; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Card> Cards { get; set; }
 
-        public DbSet<UserCard> UserCards { get; set; }
+        public DbSet<UserCard> UsersCards { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

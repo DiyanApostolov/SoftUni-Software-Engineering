@@ -1,9 +1,9 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-
-namespace CarShop.Services
+﻿namespace CarShop.Services
 {
-    interface PasswordHasher : IPasswordHasher
+    using System.Security.Cryptography;
+    using System.Text;
+
+    public class PasswordHasher : IPasswordHasher
     {
         public string HashPassword(string password)
         {
@@ -14,12 +14,12 @@ namespace CarShop.Services
 
             // Create a SHA256   
             using var sha256Hash = SHA256.Create();
-            
+
             // ComputeHash - returns byte array  
             byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
 
             // Convert byte array to a string   
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
 
             for (int i = 0; i < bytes.Length; i++)
             {
@@ -27,7 +27,6 @@ namespace CarShop.Services
             }
 
             return builder.ToString();
-            
         }
     }
 }

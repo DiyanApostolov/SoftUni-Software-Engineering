@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BattleCards.Data.Migrations
 {
     [DbContext(typeof(BattleCardsDbContext))]
-    [Migration("20210621211935_UsersCardsUserCardsTables")]
-    partial class UsersCardsUserCardsTables
+    [Migration("20210624204134_AddTables")]
+    partial class AddTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,9 +22,11 @@ namespace BattleCards.Data.Migrations
 
             modelBuilder.Entity("BattleCards.Data.Models.Card", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Attack")
                         .HasColumnType("int");
@@ -81,37 +83,38 @@ namespace BattleCards.Data.Migrations
 
             modelBuilder.Entity("BattleCards.Data.Models.UserCard", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CardId")
+                    b.Property<int>("CardId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
                         .IsRequired()
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(40)");
-
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.HasIndex("CardId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
-                    b.ToTable("UserCards");
+                    b.ToTable("UsersCards");
                 });
 
             modelBuilder.Entity("BattleCards.Data.Models.UserCard", b =>
                 {
                     b.HasOne("BattleCards.Data.Models.Card", "Card")
-                        .WithMany("UserCard")
+                        .WithMany("Users")
                         .HasForeignKey("CardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BattleCards.Data.Models.User", "User")
-                        .WithMany("UserCard")
-                        .HasForeignKey("UserId");
+                        .WithMany("Cards")
+                        .HasForeignKey("UserId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Card");
 
@@ -120,12 +123,12 @@ namespace BattleCards.Data.Migrations
 
             modelBuilder.Entity("BattleCards.Data.Models.Card", b =>
                 {
-                    b.Navigation("UserCard");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("BattleCards.Data.Models.User", b =>
                 {
-                    b.Navigation("UserCard");
+                    b.Navigation("Cards");
                 });
 #pragma warning restore 612, 618
         }
