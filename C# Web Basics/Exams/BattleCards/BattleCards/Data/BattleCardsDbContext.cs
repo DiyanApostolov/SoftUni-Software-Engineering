@@ -18,5 +18,11 @@
                 optionsBuilder.UseSqlServer("Server=.;Database=BattleCards;Integrated Security=True;");
             }
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserCard>()
+                .HasKey(k => new { k.UserId, k.CardId });
+        }
     }
 }

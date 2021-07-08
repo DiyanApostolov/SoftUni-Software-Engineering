@@ -23,7 +23,8 @@
         [Required]
         public string Password { get; set; }
 
-        public ICollection<UserCard> Cards { get; set; } = new HashSet<UserCard>();
+        public ICollection<UserCard> Cards { get; set; } 
+            = new List<UserCard>();
 
     }
 }

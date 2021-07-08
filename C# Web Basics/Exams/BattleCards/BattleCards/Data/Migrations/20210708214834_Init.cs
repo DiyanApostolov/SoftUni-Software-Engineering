@@ -2,7 +2,7 @@
 
 namespace BattleCards.Data.Migrations
 {
-    public partial class AddTables : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,13 +42,12 @@ namespace BattleCards.Data.Migrations
                 name: "UsersCards",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserId1 = table.Column<string>(type: "nvarchar(40)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(40)", nullable: false),
                     CardId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsersCards", x => x.UserId);
+                    table.PrimaryKey("PK_UsersCards", x => new { x.UserId, x.CardId });
                     table.ForeignKey(
                         name: "FK_UsersCards_Cards_CardId",
                         column: x => x.CardId,
@@ -56,8 +55,8 @@ namespace BattleCards.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UsersCards_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_UsersCards_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -67,11 +66,6 @@ namespace BattleCards.Data.Migrations
                 name: "IX_UsersCards_CardId",
                 table: "UsersCards",
                 column: "CardId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsersCards_UserId1",
-                table: "UsersCards",
-                column: "UserId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

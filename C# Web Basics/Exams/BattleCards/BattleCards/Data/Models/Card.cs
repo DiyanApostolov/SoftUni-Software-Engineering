@@ -32,7 +32,8 @@
         [MaxLength(MaxCardDescription)]
         public string Description { get; set; }
 
-        public ICollection<UserCard> Users { get; set; } = new List<UserCard>();
+        public ICollection<UserCard> Users { get; set; } 
+            = new List<UserCard>();
 
     }
 }

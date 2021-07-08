@@ -22,7 +22,19 @@
         [Authorize]
         public HttpResponse All()
         {
-            return View();
+            var cards = this.data.Cards
+                .Select(c => new CardListingModel
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    ImageUrl = c.ImageUrl,
+                    Attack = c.Attack,
+                    Health = c.Health,
+                    Description = c.Description,
+                    Keyword = c.Keyword
+                }).ToList();
+
+            return this.View(cards);
         }
 
         [Authorize]
@@ -103,6 +115,19 @@
             this.data.SaveChanges();
 
             return this.Redirect("/Cards/All");
+        }
+
+        [Authorize]
+        public HttpResponse RemoveFromCollection(int cardId)
+        {
+            var userCard = this.data.UsersCards
+                .First(uc => uc.UserId == this.User.Id && uc.CardId == cardId);
+
+            this.data.UsersCards.Remove(userCard);
+
+            this.data.SaveChanges();
+
+            return this.Redirect("/Cards/Collection");
         }
     }
 }

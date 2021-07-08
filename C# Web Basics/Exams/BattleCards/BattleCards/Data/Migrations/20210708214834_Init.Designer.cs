@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BattleCards.Data.Migrations
 {
     [DbContext(typeof(BattleCardsDbContext))]
-    [Migration("20210624204134_AddTables")]
-    partial class AddTables
+    [Migration("20210708214834_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,20 +84,14 @@ namespace BattleCards.Data.Migrations
             modelBuilder.Entity("BattleCards.Data.Models.UserCard", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<int>("CardId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(40)");
-
-                    b.HasKey("UserId");
+                    b.HasKey("UserId", "CardId");
 
                     b.HasIndex("CardId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("UsersCards");
                 });
@@ -112,7 +106,7 @@ namespace BattleCards.Data.Migrations
 
                     b.HasOne("BattleCards.Data.Models.User", "User")
                         .WithMany("Cards")
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
