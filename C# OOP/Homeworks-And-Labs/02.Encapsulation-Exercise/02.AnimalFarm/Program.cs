@@ -12,11 +12,7 @@
             try
             {
                 Chicken chicken = new Chicken(name, age);
-                Console.WriteLine(
-                    "Chicken {0} (age {1}) can produce {2} eggs per day.",
-                    chicken.Name,
-                    chicken.Age,
-                    chicken.ProductPerDay);
+                Console.WriteLine($"Chicken {chicken.Name} (age {chicken.Age}) can produce {chicken.ProductPerDay} eggs per day.");
             }
             catch (Exception ex)
             {

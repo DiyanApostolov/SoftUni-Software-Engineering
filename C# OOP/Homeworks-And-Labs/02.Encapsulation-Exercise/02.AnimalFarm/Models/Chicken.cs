@@ -7,28 +7,13 @@
         private const int MinAge = 0;
         private const int MaxAge = 15;
 
-        protected string name;
-        internal int age;
+        private string name;
+        private int age;
 
         internal Chicken(string name, int age)
         {
-            if (String.IsNullOrEmpty(name) || String.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("Name cannot be empty.");
-            }
-            else
-            {
-                this.name = name;
-            }
-
-            if (age >= MinAge && age <= MaxAge)
-            {
-                this.age = age;
-            }
-            else
-            {
-                throw new ArgumentException("Age should be between 0 and 15.");
-            }
+            this.Name = name;
+            this.Age = age;
         }
 
         public string Name
@@ -38,9 +23,16 @@
                 return this.name;
             }
 
-            internal set
+            private set
             {
-                this.name = value;
+                if (String.IsNullOrEmpty(value) || String.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException($"{nameof(Name)} cannot be empty.");
+                }
+                else
+                {
+                    this.name = value;
+                }
             }
         }
 
@@ -51,9 +43,16 @@
                 return this.age;
             }
 
-            protected set
+            private set
             {
-                this.age = value;
+                if (value >= MinAge && value <= MaxAge)
+                {
+                    this.age = value;
+                }
+                else
+                {
+                    throw new ArgumentException($"{nameof(Age)} should be between {MinAge} and {MaxAge}.");
+                }
             }
         }
 
@@ -65,28 +64,12 @@
 			}
         }
 
-        private double CalculateProductPerDay()
+        private double CalculateProductPerDay() => this.Age switch
         {
-            switch (this.Age)
-            {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                    return 1.5;
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                    return 2;
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                    return 1;
-                default:
-                    return 0.75;
-            }
-        }
+            var x when x >= 0 && x < 4 => 1.5,
+            var x when x >= 4 && x < 8 => 2,
+            var x when x >= 8 && x < 12 => 1,
+            _ => 0.75
+        };
     }
 }
