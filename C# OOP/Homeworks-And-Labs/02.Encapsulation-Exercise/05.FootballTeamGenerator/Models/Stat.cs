@@ -11,7 +11,7 @@
         {
             Endurance = endurance;
             Sprint = sprint;
-            Dribble = dribble;
+            Dribblе = dribble;
             Passing = passing;
             Shooting = shooting;
         }
