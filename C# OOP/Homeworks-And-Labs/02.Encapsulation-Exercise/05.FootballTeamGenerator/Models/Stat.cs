@@ -7,73 +7,79 @@
         private const int MinStatsValue = 0;
         private const int MaxStatsValue = 100;
 
+        private int endurance;
+        private int sprint;
+        private int dribble;
+        private int passing;
+        private int shooting;
+
         public Stat(int endurance, int sprint, int dribble, int passing, int shooting)
         {
-            Endurance = endurance;
-            Sprint = sprint;
-            Dribblе = dribble;
-            Passing = passing;
-            Shooting = shooting;
+            this.Endurance = endurance;
+            this.Sprint = sprint;
+            this.Dribble = dribble;
+            this.Passing = passing;
+            this.Shooting = shooting;
         }
 
         public int Endurance
         {
-            get => this.Endurance;
+            get => this.endurance;
             set
             {
                 ValidateStatValue(value, nameof(this.Endurance));
-                this.Endurance = value;
+                this.endurance = value;
             }
         }
 
         public int Sprint
         {
-            get => this.Sprint;
+            get => this.sprint;
             set
             {
                 ValidateStatValue(value, nameof(this.Sprint));
-                this.Sprint = value;
+                this.sprint = value;
             }
         }
 
-        public int Dribblе
+        public int Dribble
         {
-            get => this.Dribblе;
+            get => this.dribble;
             set
             {
-                ValidateStatValue(value, nameof(this.Dribblе));
-                this.Dribblе = value;
+                ValidateStatValue(value, nameof(this.Dribble));
+                this.dribble = value;
             }
         }
 
         public int Passing
         {
-            get => this.Passing;
+            get => this.passing;
             set
             {
                 ValidateStatValue(value, nameof(this.Passing));
-                this.Passing = value;
+                this.passing = value;
             }
         }
 
         public int Shooting
         {
-            get => this.Shooting;
+            get => this.shooting;
             set
             {
                 ValidateStatValue(value, nameof(this.Shooting));
-                this.Shooting = value;
+                this.shooting = value;
             }
         }
 
         public double OverallStat
             => (this.Endurance
             + this.Sprint
-            + this.Dribblе
+            + this.Dribble
             + this.Passing
             + this.Shooting) / 5.0;
 
-        private void ValidateStatValue(double value, string statName)
+        private void ValidateStatValue(int value, string statName)
         {
             if (value < MinStatsValue || value > MaxStatsValue)
             {
