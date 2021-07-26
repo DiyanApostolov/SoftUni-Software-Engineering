@@ -7,7 +7,6 @@
     {
         public static void Main()
         {
-            // Don't forget to uncomment Controller class in the Engine!
             IEngine engine = new Engine();
             engine.Run();
         }

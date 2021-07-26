@@ -4,16 +4,26 @@
 
     public class Dye : IDye
     {
-        public int Power => throw new System.NotImplementedException();
-
-        public bool IsFinished()
+        public Dye(int power)
         {
-            throw new System.NotImplementedException();
+            this.Power = power;
         }
+
+        public int Power { get; private set; }
 
         public void Use()
         {
-            throw new System.NotImplementedException();
+            this.Power -= 10;
+
+            if (this.Power < 0)
+            {
+                this.Power = 0;
+            }
+        }
+
+        public bool IsFinished()
+        {
+            return this.Power == 0; 
         }
     }
 }

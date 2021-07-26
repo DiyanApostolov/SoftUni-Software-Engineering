@@ -1,21 +1,48 @@
 ﻿namespace Easter.Models.Eggs
 {
+    using System;
     using Easter.Models.Eggs.Contracts;
+    using Easter.Utilities.Messages;
 
     public class Egg : IEgg
     {
-        public string Name => throw new System.NotImplementedException();
+        private string name;
 
-        public int EnergyRequired => throw new System.NotImplementedException();
+        public Egg(string name, int energyRequired)
+        {
+            this.Name = name;
+            this.EnergyRequired = energyRequired;
+        }
+
+        public string Name 
+        {
+            get => this.name;
+            set 
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(ExceptionMessages.InvalidEggName);
+                }
+
+                this.name = value;
+            } 
+        }
+
+        public int EnergyRequired { get; protected set; }
 
         public void GetColored()
         {
-            throw new System.NotImplementedException();
+            this.EnergyRequired -= 10;
+
+            if (this.EnergyRequired < 0)
+            {
+                this.EnergyRequired = 0;
+            }
         }
 
         public bool IsDone()
         {
-            throw new System.NotImplementedException();
+            return EnergyRequired == 0;
         }
     }
 }

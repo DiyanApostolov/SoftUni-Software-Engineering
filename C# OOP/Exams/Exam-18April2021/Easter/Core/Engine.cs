@@ -5,7 +5,6 @@
     using Easter.IO;
     using Easter.IO.Contracts;
     using Easter.Core.Contracts;
-    using Easter.Models.Bunnies;
 
     public class Engine : IEngine
     {
