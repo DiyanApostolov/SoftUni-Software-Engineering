@@ -22,7 +22,7 @@
         }
 
         [Test]
-        public void ThrowExeprionWhenPresetIsNull()
+        public void ThrowExeptionWhenPresentIsNull()
         {
             Present nullPresent = null;
 
@@ -30,7 +30,7 @@
         }
 
         [Test]
-        public void ThrowExeprionWhenPresentAlreadyExist()
+        public void ThrowExeptionWhenPresentAlreadyExist()
         {
             Present present = new Present("Truck", 25.5);
 
