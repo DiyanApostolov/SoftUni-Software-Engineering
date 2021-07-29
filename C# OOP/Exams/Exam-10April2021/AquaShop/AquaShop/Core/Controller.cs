@@ -4,8 +4,12 @@
     using System.Collections.Generic;
 
     using AquaShop.Core.Contracts;
+    using AquaShop.Models.Aquariums;
     using AquaShop.Models.Aquariums.Contracts;
+    using AquaShop.Models.Decorations;
+    using AquaShop.Models.Decorations.Contracts;
     using AquaShop.Repositories;
+    using AquaShop.Utilities.Messages;
 
     public class Controller : IController
     {
@@ -20,12 +24,46 @@
 
         public string AddAquarium(string aquariumType, string aquariumName)
         {
-            throw new NotImplementedException();
+            IAquarium aquarium = null;
+
+            if (aquariumType == "FreshwaterAquarium")
+            {
+                aquarium = new FreshwaterAquarium(aquariumName);
+            }
+            else if (aquariumType == "SaltwaterAquarium")
+            {
+                aquarium = new SaltwaterAquarium(aquariumName);
+            }
+            else
+            {
+                throw new InvalidOperationException(ExceptionMessages.InvalidAquariumType);
+            }
+
+            aquariums.Add(aquarium);
+
+            return string.Format(OutputMessages.SuccessfullyAdded, aquariumType);
         }
 
         public string AddDecoration(string decorationType)
         {
-            throw new NotImplementedException();
+            IDecoration decoration = null;
+
+            if (decorationType == "Ornament")
+            {
+                decoration = new Ornament();
+            }
+            else if (decorationType == "Plant")
+            {
+                decoration = new Plant();
+            }
+            else
+            {
+                throw new InvalidOperationException(ExceptionMessages.InvalidDecorationType);
+            }
+
+            decorations.Add(decoration);
+
+            return string.Format(OutputMessages.SuccessfullyAdded, decorationType);
         }
 
         public string AddFish(string aquariumName, string fishType, string fishName, string fishSpecies, decimal price)
