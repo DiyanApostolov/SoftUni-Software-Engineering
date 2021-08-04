@@ -25,7 +25,7 @@
             
            private set
             {
-                if (string.IsNullOrEmpty(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidBunnyName);
                 }
