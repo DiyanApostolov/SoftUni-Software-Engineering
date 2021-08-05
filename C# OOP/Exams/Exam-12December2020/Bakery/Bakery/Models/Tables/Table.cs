@@ -38,6 +38,8 @@
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidTableCapacity);
                 }
+
+                this.capacity = value;
             }
         }
 
@@ -50,6 +52,8 @@
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidNumberOfPeople);
                 }
+
+                this.numberOfPeople = value;
             }
         }
 

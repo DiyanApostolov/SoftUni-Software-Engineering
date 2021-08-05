@@ -28,6 +28,8 @@
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidName);
                 }
+
+                this.name = value;
             }
         }
 
@@ -40,6 +42,8 @@
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidPortion);
                 }
+
+                this.portion = value;
             }
         }
 
@@ -52,6 +56,8 @@
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidPrice);
                 }
+
+                this.price = value;
             }
         }
 
@@ -65,6 +71,8 @@
                 {
                     throw new ArgumentException(ExceptionMessages.InvalidBrand);
                 }
+
+                this.brand = value;
             }
         }
 
