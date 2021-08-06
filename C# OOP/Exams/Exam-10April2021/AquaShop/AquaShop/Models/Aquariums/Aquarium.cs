@@ -14,7 +14,7 @@
     {
         private string name;
 
-        public Aquarium(string name, int capacity)
+        protected Aquarium(string name, int capacity)
         {
             Name = name;
             Capacity = capacity;
@@ -44,7 +44,7 @@
 
         public ICollection<IDecoration> Decorations { get; }
 
-        public ICollection<IFish> Fish { get; private set; }
+        public ICollection<IFish> Fish { get; }
 
         public void AddDecoration(IDecoration decoration)
         {

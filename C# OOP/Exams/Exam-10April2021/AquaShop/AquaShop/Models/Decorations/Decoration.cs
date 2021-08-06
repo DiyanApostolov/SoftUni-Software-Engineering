@@ -10,8 +10,8 @@
             Price = price;
         }
 
-        public int Comfort { get; set; }
+        public int Comfort { get; private set; }
 
-        public decimal Price { get; set; }
+        public decimal Price { get; private set; }
     }
 }
