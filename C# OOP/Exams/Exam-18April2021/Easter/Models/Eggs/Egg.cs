@@ -28,7 +28,7 @@
             } 
         }
 
-        public int EnergyRequired { get; protected set; }
+        public int EnergyRequired { get; private set; }
 
         public void GetColored()
         {
