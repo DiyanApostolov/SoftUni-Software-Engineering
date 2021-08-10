@@ -9,15 +9,15 @@ namespace FestivalManager.Tests
     using System.Collections.Generic;
 
     [TestFixture]
-	public class StageTests
+    public class StageTests
     {
-		private Stage stage;
+        private Stage stage;
 
-		[SetUp]
-	    public void Setup()
-	    {
-			stage = new Stage();
-		}
+        [SetUp]
+        public void Setup()
+        {
+            stage = new Stage();
+        }
 
         [Test]
         public void PerformensReturnsListAsReadOnlyCollection()
@@ -26,7 +26,7 @@ namespace FestivalManager.Tests
         }
 
         [Test]
-        public void AddPerformerMthodWorkProper()
+        public void AddPerformerMethodWorkProper()
         {
             Performer performer = new Performer("Diyan", "Apostolov", 37);
 
@@ -36,7 +36,7 @@ namespace FestivalManager.Tests
         }
 
         [Test]
-        public void AddPerformerThrowExeptionWhenPerformerIsNull()
+        public void AddPerformerMethodThrowExeptionWhenPerformerIsNull()
         {
             Performer performer = null;
 
@@ -44,13 +44,69 @@ namespace FestivalManager.Tests
         }
 
         [Test]
-        public void AddPerformerThrowExeptionWhenPerformerAgeIsUnderEighteen()
+        public void AddPerformerMethodThrowExeptionWhenPerformerAgeIsUnderEighteen()
         {
             Performer performer = new Performer("Diyan", "Apostolov", 17);
 
             Assert.Throws<ArgumentException>(() => stage.AddPerformer(performer));
         }
 
+        [Test]
+        public void AddSongMethodWorkProper()
+        {
+            Song song = new Song("One", new TimeSpan(0, 6, 45));
+            Performer performer = new Performer("Diyan", "Apostolov", 37);
+            stage.AddPerformer(performer);
+            stage.AddSong(song);
 
+            string expected = "One (06:45) will be performed by Diyan Apostolov";
+
+            string actual = stage.AddSongToPerformer("One", "Diyan Apostolov");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void AddSongMethodThrowExeptionWhenSongIsNull()
+        {
+            Song song = null;
+
+            Assert.Throws<ArgumentNullException>(() => stage.AddSong(song));
+        }
+
+        [Test]
+        public void AddSongMethodThrowExeptionWhenSongDurationIsUnderOneMinute()
+        {
+            Song song = new Song("One", new TimeSpan(0, 0, 45));
+
+            Assert.Throws<ArgumentException>(() => stage.AddSong(song));
+        }
+
+        [Test]
+        public void AddSongToPerformerMethodWorkProper()
+        {
+            Song song = new Song("One", new TimeSpan(0, 6, 45));
+            Performer performer = new Performer("Diyan", "Apostolov", 37);
+
+            performer.SongList.Add(song);
+
+            Assert.AreEqual(1, performer.SongList.Count);
+        }
+
+        [Test]
+        public void PlayMethodTerurnProperValue()
+        {
+            Song song = new Song("One", new TimeSpan(0, 6, 45));
+            Performer performer = new Performer("Diyan", "Apostolov", 37);
+            stage.AddPerformer(performer);
+            stage.AddSong(song);
+            stage.AddSongToPerformer("One", "Diyan Apostolov");
+
+            string expected = "1 performers played 1 songs";
+
+            string actual = stage.Play();
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
