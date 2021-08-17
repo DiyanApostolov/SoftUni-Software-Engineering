@@ -8,7 +8,7 @@
     using MyWebServer.Controllers;
     using MyWebServer.Results.Views;
 
-    public class Startup
+    public class Startup 
     {
         public static async Task Main()
             => await HttpServer
@@ -19,8 +19,8 @@
                     .Add<IValidator, Validator>()
                     .Add<IPasswordHasher, PasswordHasher>()
                     .Add<IViewEngine, CompilationViewEngine>()
-                    .Add<BattleCardsDbContext>())
-                .WithConfiguration<BattleCardsDbContext>(context => context
+                    .Add<ApplicationDbContext>())
+                .WithConfiguration<ApplicationDbContext>(context => context
                     .Database.Migrate())
                 .Start();
     }

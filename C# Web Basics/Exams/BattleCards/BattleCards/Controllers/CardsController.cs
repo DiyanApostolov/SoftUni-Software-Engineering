@@ -2,7 +2,7 @@
 {
     using BattleCards.Data;
     using BattleCards.Data.Models;
-    using BattleCards.Models;
+    using BattleCards.Models.Cards;
     using BattleCards.Services;
     using MyWebServer.Controllers;
     using MyWebServer.Http;
@@ -11,14 +11,14 @@
     public class CardsController : Controller
     {
         private readonly Validator validator;
-        private readonly BattleCardsDbContext data;
+        private readonly ApplicationDbContext data;
 
-        public CardsController(Validator validator, BattleCardsDbContext data)
+        public CardsController(Validator validator, ApplicationDbContext data)
         {
             this.validator = validator;
             this.data = data;
         }
-        
+
         [Authorize]
         public HttpResponse All()
         {
@@ -38,7 +38,7 @@
         }
 
         [Authorize]
-        public HttpResponse Add() => this.View();
+        public HttpResponse Add() => View();
 
         [HttpPost]
         [Authorize]
@@ -67,8 +67,8 @@
             this.data.Cards.Add(card);
             this.data.SaveChanges();
 
-            this.data.UsersCards.Add(new UserCard
-            { 
+            this.data.UserCards.Add(new UserCard
+            {
                 UserId = user.Id,
                 CardId = card.Id
             });
@@ -81,7 +81,7 @@
         [Authorize]
         public HttpResponse Collection()
         {
-            var collection = this.data.UsersCards
+            var collection = this.data.UserCards
                 .Where(uc => uc.UserId == this.User.Id)
                 .Select(c => c.Card)
                 .Select(c => new CardListingModel
@@ -101,12 +101,12 @@
         [Authorize]
         public HttpResponse AddToCollection(int cardId)
         {
-            if (this.data.UsersCards.Any(us => us.CardId == cardId && us.UserId == this.User.Id))
+            if (this.data.UserCards.Any(user => user.CardId == cardId && user.UserId == this.User.Id))
             {
                 return this.Redirect("/Cards/All");
             }
 
-            this.data.UsersCards.Add(new UserCard
+            this.data.UserCards.Add(new UserCard
             {
                 UserId = this.User.Id,
                 CardId = cardId
@@ -120,10 +120,10 @@
         [Authorize]
         public HttpResponse RemoveFromCollection(int cardId)
         {
-            var userCard = this.data.UsersCards
+            var userCard = this.data.UserCards
                 .First(uc => uc.UserId == this.User.Id && uc.CardId == cardId);
 
-            this.data.UsersCards.Remove(userCard);
+            this.data.UserCards.Remove(userCard);
 
             this.data.SaveChanges();
 

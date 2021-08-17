@@ -1,6 +1,6 @@
 ﻿namespace BattleCards.Services
 {
-    using BattleCards.Models;
+    using BattleCards.Models.Cards;
     using BattleCards.Models.Users;
     using System;
     using System.Collections.Generic;
@@ -11,7 +11,7 @@
 
     public class Validator : IValidator
     {
-        public ICollection<string> ValidateUser(RegisterUserFormModel model)
+        public ICollection<string> ValidateUser(RegisterFormModel model)
         {
             var errors = new List<string>();
 

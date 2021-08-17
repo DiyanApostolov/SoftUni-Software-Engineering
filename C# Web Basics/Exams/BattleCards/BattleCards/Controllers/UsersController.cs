@@ -12,22 +12,22 @@
     {
         private readonly IValidator validator;
         private readonly IPasswordHasher passwordHasher;
-        private readonly BattleCardsDbContext data;
+        private readonly ApplicationDbContext data;
 
-        public UsersController(
-            IValidator validator,
-            IPasswordHasher passwordHasher,
-            BattleCardsDbContext data)
+        public UsersController(IValidator validator, ApplicationDbContext data, IPasswordHasher passwordHasher)
         {
             this.validator = validator;
-            this.passwordHasher = passwordHasher;
             this.data = data;
+            this.passwordHasher = passwordHasher;
         }
 
-        public HttpResponse Register() => View();
+        public HttpResponse Register()
+        {
+            return this.View();
+        }
 
         [HttpPost]
-        public HttpResponse Register(RegisterUserFormModel model)
+        public HttpResponse Register(RegisterFormModel model)
         {
             var modelErrors = this.validator.ValidateUser(model);
 
@@ -50,20 +50,23 @@
             {
                 Username = model.Username,
                 Password = this.passwordHasher.HashPassword(model.Password),
-                Email = model.Email
+                Email = model.Email,
             };
 
             data.Users.Add(user);
 
             data.SaveChanges();
 
-            return Redirect("/Home/Index");
+            return Redirect("/");
         }
 
-        public HttpResponse Login() => View();
+        public HttpResponse Login()
+        {
+            return this.View();
+        }
 
         [HttpPost]
-        public HttpResponse Login(LoginUserFormModel model)
+        public HttpResponse Login(LoginFormModel model)
         {
             var hashedPassword = this.passwordHasher.HashPassword(model.Password);
 

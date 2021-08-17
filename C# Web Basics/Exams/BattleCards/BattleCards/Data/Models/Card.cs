@@ -1,16 +1,16 @@
 ﻿namespace BattleCards.Data.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static DataConstants;
+
     public class Card
     {
         [Key]
         [Required]
         [MaxLength(IdMaxLength)]
-        public int Id { get; set; } 
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(MaxCardName)]
@@ -32,8 +32,7 @@
         [MaxLength(MaxCardDescription)]
         public string Description { get; set; }
 
-        public ICollection<UserCard> Users { get; set; } 
+        public ICollection<UserCard> Users { get; set; }
             = new List<UserCard>();
-
     }
 }

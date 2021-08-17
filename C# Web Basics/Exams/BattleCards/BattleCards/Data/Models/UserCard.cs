@@ -1,7 +1,7 @@
-﻿namespace BattleCards.Data.Models
-{
-    using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
+namespace BattleCards.Data.Models
+{
     public class UserCard
     {
         [Required]
