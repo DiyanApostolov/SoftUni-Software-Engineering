@@ -1,4 +1,3 @@
-﻿// ReSharper disable InconsistentNaming
 namespace CarRacing.Core.Contracts
 {
     public interface IController
