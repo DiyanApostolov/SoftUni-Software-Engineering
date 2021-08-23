@@ -54,6 +54,7 @@
             };
 
             data.Users.Add(user);
+
             data.SaveChanges();
 
             return Redirect("/");
