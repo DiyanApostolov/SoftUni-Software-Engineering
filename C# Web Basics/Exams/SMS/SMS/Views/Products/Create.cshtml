@@ -1,0 +1,17 @@
+﻿<link rel="stylesheet" href="/text.css" type="text/css" />
+<h1 class="text-center">Create Product</h1>
+<form class="mx-auto half-width col-5" method="post" action="/Products/Create">
+    <div class="top-border-line primary-separator"></div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Name..." name="name">
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" step="0.01" class="form-control" id="price" placeholder="Price..." name="price">
+    </div>
+    <div class="top-border-line primary-separator"></div>
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn SMS-bg-color">Create</button>
+    </div>
+</form>

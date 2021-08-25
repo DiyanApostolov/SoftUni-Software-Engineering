@@ -1,0 +1,31 @@
+﻿<div class="button-holder text-center">
+    <h3>Hello, Username</h3>
+    <a href="/Carts/Details" class="btn btn-outline-primary">My Cart</a>
+</div>
+<main class="mt-3">
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr class="row">
+                    <th scope="col" class="col-lg-5">Name</th>
+                    <th scope="col" class="col-lg-5">Price</th>
+                    <th scope="col" class="col-lg-2">Add to Cart</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                { 
+                    <tr class="row">
+                        <td class="col-lg-5">@product.Name</td>
+                        <td class="col-lg-5">@product.Price</td>
+                        <td class="col-lg-2">
+                            <div class="button-holder">
+                                <a href="/Carts/AddProduct?productId=ProductId" class="btn btn-outline-primary">Add to Cart</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+        </table>
+    </div>
+</main>

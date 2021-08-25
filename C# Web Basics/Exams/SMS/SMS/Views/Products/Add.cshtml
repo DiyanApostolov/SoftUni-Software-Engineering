@@ -1,0 +1,17 @@
+﻿<link rel="stylesheet" href="/text.css" type="text/css" />
+    <h1 class="text-center">Add Product to Cart</h1>
+<form class="mx-auto half-width col-5" method="post" action="/Products/Add">
+    <div class="top-border-line primary-separator"></div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" value="ProductName" name="name" disabled>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" step="0.01" class="form-control" id="price" value="0.00" name="price" disabled>
+    </div>
+    <div class="top-border-line primary-separator"></div>
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn SMS-bg-color">Add to Cart</button>
+    </div>
+</form>
