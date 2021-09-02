@@ -1,7 +1,7 @@
 INSERT INTO Towns (Id, [Name]) VALUES 
-	(1, 'Sofia'),
-	(2, 'Plovdiv'),
-	(3, 'Varna')
+(1, 'Sofia'),
+(2, 'Plovdiv'),
+(3, 'Varna')
 
 
 INSERT INTO Minions(Id, [Name], Age, TownId) VALUES
