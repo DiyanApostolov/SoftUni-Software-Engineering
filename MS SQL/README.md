@@ -1,4 +1,1 @@
-# <p align="center"><a href="https://softuni.bg/modules/22/csharp-db/1302"> C# DB - september 2021 <a/><p>
-  
-
-C# DB course
+# <p align="center"><a href="https://softuni.bg/trainings/3491/ms-sql-september-2021/internal"> MS SQL - september 2021 <a/><p>
