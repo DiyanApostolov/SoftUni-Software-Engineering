@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>P03_FootballBetting</RootNamespace>
+    <AssemblyName>P03_FootballBetting</AssemblyName>
+  </PropertyGroup>
+
+</Project>
