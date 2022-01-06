@@ -34,8 +34,8 @@
 </td>
 <td>
 
-| **Course**                                                                                  | **Link**                                                                    |
-| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| **Course**                                                                                  | **Link**                                                   | **Grade**
+| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------- |
 | <a href="https://softuni.bg/trainings/3588/js-advanced-january-2022"> JS Advanced </a>          | <a href="https://softuni.bg/trainings/3588/js-advanced-january-2022"> Link </a> |
 | <a href="https://softuni.bg/trainings/3589/js-applications-february-2022"> JS Applications </a> | <a href="https://softuni.bg/trainings/3589/js-applications-february-2022"> Link </a> |
 
