@@ -14,6 +14,7 @@
 
 <tr>
   <th> C# </th>
+  <th> JavaScript </th>
 </tr>
 
 <tr>
@@ -29,4 +30,14 @@
 | <a href="https://softuni.bg/trainings/3492/entity-framework-core-october-2021" > Entity Framework Core </a>         | <a href="https://softuni.bg/certificates/details/119139/9f8182b1"> Link</a> | <a href="https://softuni.bg/certificates/details/119139/9f8182b1"> 6.00 </a> |
 | <a href="https://softuni.bg/trainings/3353/csharp-web-basics-basics-may-2021/internal" > C# Web Basics </a>         | <a href="https://softuni.bg/trainings/3353/csharp-web-basics-basics-may-2021/internal"> Link</a> |
 | <a href="https://softuni.bg/trainings/3354/asp-dot-net-core-june-2021/internal" > ASP.NET Core </a>         | <a href="https://softuni.bg/trainings/3354/asp-dot-net-core-june-2021/internal"> Link</a> |
+    
+</td>
+<td>
+
+| **Course**                                                                                  | **Link**                                                                    |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| <a href="https://softuni.bg/trainings/2838/js-advanced-may-2020"> JS Advanced </a>          | <a href="https://softuni.bg/certificates/details/83864/677cd2c4"> Link </a> |
+| <a href="https://softuni.bg/trainings/2840/js-applications-june-2020"> JS Applications </a> | <a href="https://softuni.bg/certificates/details/86804/39c858a7"> Link </a> |
+
+</td>
 </tr>
