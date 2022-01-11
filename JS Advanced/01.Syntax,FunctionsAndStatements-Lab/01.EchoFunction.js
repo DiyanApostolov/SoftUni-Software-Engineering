@@ -4,3 +4,5 @@ function stringLenght(input) {
     console.log(params.length);
     console.log(params);
 }
+
+stringLenght('Hello, JavaScript!');
