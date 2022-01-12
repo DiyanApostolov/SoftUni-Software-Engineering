@@ -1,5 +1,3 @@
-"use strict"
-
 function solve (first, second, third) {
     let firstLenght = first.lenght;
     let secondLenght = second.lenght;
@@ -13,3 +11,4 @@ function solve (first, second, third) {
 }
 
 solve('chocolate', 'ice cream', 'cake');
+

@@ -1,8 +1,5 @@
-"use strict"
-
 function stringLenght(input) {
-    console.log(params.length);
-    console.log(params);
+    console.log(input.length);
+    console.log(input);
 }
 
-stringLenght('Hello, JavaScript!');
