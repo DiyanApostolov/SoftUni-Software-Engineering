@@ -1,7 +1,7 @@
 function solve (first, second, third) {
-    let firstLenght = first.lenght;
-    let secondLenght = second.lenght;
-    let thirdLenght = third.lenght;
+    let firstLenght = first.length;
+    let secondLenght = second.length;
+    let thirdLenght = third.length;
 
     let sum = firstLenght + secondLenght + thirdLenght;
     let result = Math.floor(sum / 3);
@@ -10,5 +10,4 @@ function solve (first, second, third) {
     console.log(result);
 }
 
-solve('chocolate', 'ice cream', 'cake');
 
