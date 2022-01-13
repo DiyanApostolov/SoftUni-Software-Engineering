@@ -27,6 +27,3 @@ function solve(x1, y1, x2, y2){
     console.log('{' + x2 + ', ' + y2 + '} to {0, 0} is ' + result2 );
     console.log('{' + x1 + ', ' + y1 + '} to ' + '{' + x2 + ', ' + y2 + '} is ' + result3);
 }
-
-solve(3, 0, 0, 4);
-solve(2, 1, 1, 1);
