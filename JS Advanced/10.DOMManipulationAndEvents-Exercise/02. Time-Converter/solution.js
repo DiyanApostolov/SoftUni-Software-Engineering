@@ -1,4 +1,4 @@
-function timeConverter() {
+function attachEventsListeners() {
 
     let days = document.getElementById('days');
     let hours = document.getElementById('hours');
@@ -17,7 +17,25 @@ function timeConverter() {
         seconds: 86400
     }; 
 
+    function convert(value, unit) {
+        let days = value / rations[unit];
+
+        return {
+            days: days,
+            hours: days*rations.hours,
+            minutes: days*rations.minutes,
+            seconds: days*rations.seconds
+        };
+    }
+
     function onConvert(event){
-        console.log(event.target);
+     let input = event.target.parentElement.querySelector('input[type="text"]');
+
+     let time = convert(Number(input.value), input.id);
+     
+     days.value = time.days;
+     hours.value = time.hours;
+     minutes.value = time.minutes;
+     seconds.value = time.seconds
     }
 }
