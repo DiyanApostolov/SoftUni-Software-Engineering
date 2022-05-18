@@ -28,7 +28,7 @@
 | <a href="https://softuni.bg/trainings/3344/csharp-oop-june-2021/internal" > C# OOP </a>         | <a href="https://softuni.bg/certificates/details/113013/b0636067"> Link</a> | <a href="https://softuni.bg/certificates/details/113013/b0636067"> 6.00 </a> |
 | <a href="https://softuni.bg/trainings/3531/ms-sql-september-2021/internal" > MS SQL </a>         | <a href="https://softuni.bg/certificates/details/114134/470506e9"> Link</a> | <a href="https://softuni.bg/certificates/details/114134/470506e9"> 6.00 </a> |
 | <a href="https://softuni.bg/trainings/3492/entity-framework-core-october-2021" > Entity Framework Core </a>         | <a href="https://softuni.bg/certificates/details/119139/9f8182b1"> Link</a> | <a href="https://softuni.bg/certificates/details/119139/9f8182b1"> 6.00 </a> |
-| <a href="https://softuni.bg/trainings/3353/csharp-web-basics-basics-may-2021/internal" > C# Web Basics </a>         | <a href="https://softuni.bg/trainings/3353/csharp-web-basics-basics-may-2021/internal"> Link</a> |
+| <a href="https://softuni.bg/trainings/3353/csharp-web-basics-basics-may-2021/internal" > C# Web Basics </a>         | <a href="https://softuni.bg/certificates/details/132817/938d7954"> Link</a> | Link</a> | <a href="https://softuni.bg/certificates/details/132817/938d7954"> 6.00 </a>
 | <a href="https://softuni.bg/trainings/3354/asp-dot-net-core-june-2021/internal" > ASP.NET Core </a>         | <a href="https://softuni.bg/trainings/3354/asp-dot-net-core-june-2021/internal"> Link</a> |
     
 </td>
