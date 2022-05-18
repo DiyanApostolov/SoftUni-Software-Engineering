@@ -39,9 +39,8 @@
 | <a href="https://softuni.bg/trainings/3588/js-advanced-january-2022"> JS Advanced </a>          | <a href="https://softuni.bg/certificates/details/126641/0294d7ec"> Link </a> | <a href="https://softuni.bg/certificates/details/126641/0294d7ec"> 6.00 </a>
 | <a href="https://softuni.bg/trainings/3589/js-applications-february-2022"> JS Applications </a> | <a href="https://softuni.bg/certificates/details/130353/1388e463"> Link </a> | <a href="https://softuni.bg/certificates/details/130353/1388e463"> 6.00 </a>
 | <a href="https://softuni.bg/trainings/3726/html-and-css-may-2022"> HTML & CSS </a> | <a href="https://softuni.bg/trainings/3726/html-and-css-may-2022"> Link </a> 
-|
 | <a href="https://softuni.bg/trainings/3727/reactjs-june-2022"> React </a> | <a href="https://softuni.bg/trainings/3727/reactjs-june-2022"> Link </a> 
-| 
+
 
 </td>
 </tr>
