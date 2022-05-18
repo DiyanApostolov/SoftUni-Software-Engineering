@@ -14,7 +14,7 @@
 
 <tr>
   <th> C# </th>
-  <th> JavaScript </th>
+  <th> JavaScript & Front-End </th>
 </tr>
 
 <tr>
@@ -29,15 +29,19 @@
 | <a href="https://softuni.bg/trainings/3531/ms-sql-september-2021/internal" > MS SQL </a>         | <a href="https://softuni.bg/certificates/details/114134/470506e9"> Link</a> | <a href="https://softuni.bg/certificates/details/114134/470506e9"> 6.00 </a> |
 | <a href="https://softuni.bg/trainings/3492/entity-framework-core-october-2021" > Entity Framework Core </a>         | <a href="https://softuni.bg/certificates/details/119139/9f8182b1"> Link</a> | <a href="https://softuni.bg/certificates/details/119139/9f8182b1"> 6.00 </a> |
 | <a href="https://softuni.bg/trainings/3353/csharp-web-basics-basics-may-2021/internal" > C# Web Basics </a>         | <a href="https://softuni.bg/certificates/details/132817/938d7954"> Link</a> | <a href="https://softuni.bg/certificates/details/132817/938d7954"> 6.00 </a>
-| <a href="https://softuni.bg/trainings/3354/asp-dot-net-core-june-2021/internal" > ASP.NET Core </a>         | <a href="https://softuni.bg/trainings/3354/asp-dot-net-core-june-2021/internal"> Link</a> |
+| <a href="https://softuni.bg/trainings/3354/asp-dot-net-core-june-2021/internal" > ASP.NET Core </a>         | <a href="https://softuni.bg/certificates/details/133210/4f0163ff"> Link</a> | <a href="https://softuni.bg/certificates/details/133210/4f0163ff"> 6.00 </a>
     
 </td>
 <td>
 
 | **Course**                                                                                  | **Link**                                                   | **Grade**
 | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------- |
-| <a href="https://softuni.bg/trainings/3588/js-advanced-january-2022"> JS Advanced </a>          | <a href="https://softuni.bg/trainings/3588/js-advanced-january-2022"> Link </a> |
-| <a href="https://softuni.bg/trainings/3589/js-applications-february-2022"> JS Applications </a> | <a href="https://softuni.bg/trainings/3589/js-applications-february-2022"> Link </a> |
+| <a href="https://softuni.bg/trainings/3588/js-advanced-january-2022"> JS Advanced </a>          | <a href="https://softuni.bg/certificates/details/126641/0294d7ec"> Link </a> | <a href="https://softuni.bg/certificates/details/126641/0294d7ec"> 6.00 </a>
+| <a href="https://softuni.bg/trainings/3589/js-applications-february-2022"> JS Applications </a> | <a href="https://softuni.bg/certificates/details/130353/1388e463"> Link </a> | <a href="https://softuni.bg/certificates/details/130353/1388e463"> 6.00 </a>
+| <a href="https://softuni.bg/trainings/3726/html-and-css-may-2022"> HTML & CSS </a> | <a href="https://softuni.bg/trainings/3726/html-and-css-may-2022"> Link </a> 
+|
+| <a href="https://softuni.bg/trainings/3727/reactjs-june-2022"> React </a> | <a href="https://softuni.bg/trainings/3727/reactjs-june-2022"> Link </a> 
+| 
 
 </td>
 </tr>
