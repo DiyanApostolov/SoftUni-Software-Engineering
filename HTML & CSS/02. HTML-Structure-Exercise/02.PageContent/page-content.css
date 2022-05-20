@@ -1,19 +1,23 @@
 
-h1{
-    text-size-adjust: 28px;
+article header h1 {
+    font-size: 28px;
 }
 
-p{
+article header p{
     font-style: italic;
 }
 
-body{
+article p {
+    font-size: 24px;
+}
+
+body {
     margin: 0px;
     padding: 0px;
     background-color: #CCCCCC;
 }
 
-section{
+section {
     margin-left: 20px;
 }
 
